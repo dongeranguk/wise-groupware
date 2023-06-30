@@ -1,0 +1,24 @@
+debug: false
+management.endpoints.web.exposure.inclde: "*"
+
+logging:
+  level:
+    com.wise.groupware: debug
+    org.springframework.web.servlet: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/board
+    username: du
+    password: thisTESTpw!@#$
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    defer-datasource-initialization: true # hibernate 기반의 초기화 true인 경우 ddl-auto 옵션에 대한 설정이 먼저 실행되고, sql script가 실행되도록 함.
+    hibernate.ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+      hibernate.default_batch_fetch_size: 100
+  h2.console.enable: false
+  sql.init.mode: always # 모든 데이터베이스에 sql script('data.sql')를 동작시킴 만약, script가 비어있는 경우 오류 발생
