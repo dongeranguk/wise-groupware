@@ -1,5 +1,5 @@
 debug: false
-management.endpoints.web.exposure.inclde: "*"
+management.endpoints.web.exposure.include: "*"
 
 logging:
   level:
@@ -20,5 +20,4 @@ spring:
     properties:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
-  h2.console.enable: false
   sql.init.mode: always # 모든 데이터베이스에 sql script('data.sql')를 동작시킴 만약, script가 비어있는 경우 오류 발생
