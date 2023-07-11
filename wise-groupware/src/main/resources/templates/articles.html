@@ -5,7 +5,7 @@
     <title>게시판 페이지</title>
 </head>
 <body>
-    <header th:replace="header :: header"></header>
+    <header id="header"></header>
     <main>
         <form>
             <label for="search-type" hidden>유형</label>
@@ -21,14 +21,14 @@
             <button type="submit">검색</button>
         </form>
         <table>
-            <tdead>
+            <thead>
                 <tr>
                     <th>제목</th>
                     <th>해시태그</th>
                     <th>작성자</th>
                     <th>작성일</th>
                 </tr>
-            </tdead>
+            </thead>
             <tbody>
                 <tr>
                     <td>첫번째 글</td>
@@ -65,7 +65,6 @@
         </nav>
 
     </main>
-
-<footer th:replace="footer :: footer"></footer>
+    <footer id="footer"></footer>
 </body>
 </html>
