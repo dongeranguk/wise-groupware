@@ -1,17 +1,46 @@
 package com.wise.groupware.dto;
 
+import com.wise.groupware.domain.Article;
+
 import java.time.LocalDateTime;
 
 public record ArticleDto(
+        Long id,
+        UserAccountDto userAccountDto,
         String title,
         String content,
         String hashtag,
         LocalDateTime createdAt,
-        String createdBy
+        String createdBy,
+        LocalDateTime modifiedAt,
+        String modifiedBy
 ) {
 
-    public static ArticleDto of(String title, String content, String hashtag, LocalDateTime createdAt, String createdBy) {
-        return new ArticleDto(title, content, hashtag, createdAt, createdBy);
+    public static ArticleDto of(Long id, UserAccountDto userAccountDto, String title, String content, String hashtag, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
+        return new ArticleDto(id, userAccountDto, title, content, hashtag, createdAt, createdBy, modifiedAt, modifiedBy);
+    }
+
+    public static ArticleDto from(Article entity) {
+        return ArticleDto.of(
+                entity.getId(),
+                UserAccountDto.from(entity.getUserAccount()),
+                entity.getTitle(),
+                entity.getContent(),
+                entity.getHashtag(),
+                entity.getCreatedAt(),
+                entity.getCreatedBy(),
+                entity.getModifiedAt(),
+                entity.getModifiedBy()
+        );
+    }
+
+    public Article toEntity() {
+        return Article.of(
+                userAccountDto.toEntity(),
+                title,
+                content,
+                hashtag
+        );
     }
 
 }
