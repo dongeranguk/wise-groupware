@@ -14,6 +14,7 @@ spring:
     password: thisTESTpw!@#$
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    open-in-view: false
     defer-datasource-initialization: true # hibernate 기반의 초기화 true인 경우 ddl-auto 옵션에 대한 설정이 먼저 실행되고, sql script가 실행되도록 함.
     hibernate.ddl-auto: create
     show-sql: true
